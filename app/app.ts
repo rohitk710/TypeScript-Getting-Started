@@ -1,48 +1,79 @@
-function startGame() {
-  let playerName: string | undefined = getInputValue("playername");
-  logPlayer(playerName);
+/// <reference path="player.ts" />
+/// <reference path="game.ts" />
+// /// <reference path="./result.ts" />
 
-  postScore(100, playerName);
-  postScore(-5, playerName);
-}
+let newGame: Game;
 
-function logPlayer(name: string = "Player"): void {
-  arrowLogMessage(`New game starting for: ${name}`);
-}
+document.getElementById("startGame")!.addEventListener("click", () => {
+  const player: Player = new Player();
+  player.name = Utility.getInputValue("playerName");
 
-function getInputValue(elementId: string): string | undefined {
-  const inputElement: HTMLInputElement = <HTMLInputElement>(
-    document.getElementById(elementId)
-  );
-  if (inputElement.value === "") {
-    return undefined;
-  } else {
-    return inputElement.value;
-  }
-}
+  const problemCount: number = Number(Utility.getInputValue("problemCount"));
+  const factor: number = Number(Utility.getInputValue("factor"));
 
-function postScore(score: number, playerName?: string): void {
-  let logger: (value: string) => void;
+  newGame = new Game(player, problemCount, factor);
+  newGame.displayGame();
+});
 
-  if(score < 0){
-      logger = logError;
-  }
-  else {
-      logger = arrowLogMessage;
-  }
+document.getElementById("calculate")!.addEventListener("click", () => {
+  newGame.caculateScore();
+});
 
-  const scoreElement: HTMLElement | null = document.getElementById(
-    "posted-scores"
-  );
-  scoreElement!.innerText = `${score} - ${playerName}`;
+// function startGame() {
+//   let playerName: string | undefined = getInputValue("playername");
+//   logPlayer(playerName);
 
-  logger(`Score: ${score}`);
-}
+//   postScore(100, playerName);
+//   postScore(-5, playerName);
+// }
 
-document.getElementById("startGame")!.addEventListener("click", startGame);
+// function logPlayer(name: string = "Player"): void {
+//   arrowLogMessage(`New game starting for: ${name}`);
+// }
 
-function logError(message: string): void {
-  console.error(message);
-}
+// // function getInputValue(elementId: string): string | undefined {
+// //   const inputElement: HTMLInputElement = <HTMLInputElement>(
+// //     document.getElementById(elementId)
+// //   );
+// //   if (inputElement.value === "") {
+// //     return undefined;
+// //   } else {
+// //     return inputElement.value;
+// //   }
+// // }
 
-const arrowLogMessage = (message: string): void => console.log(message);
+// function postScore(score: number, playerName?: string): void {
+//   let logger: (value: string) => void;
+
+//   if (score < 0) {
+//     logger = logError;
+//   } else {
+//     logger = arrowLogMessage;
+//   }
+
+//   const scoreElement: HTMLElement | null = document.getElementById(
+//     "posted-scores"
+//   );
+//   scoreElement!.innerText = `${score} - ${playerName}`;
+
+//   logger(`Score: ${score}`);
+// }
+
+// document.getElementById("startGame")!.addEventListener("click", startGame);
+
+// function logError(message: string): void {
+//   console.error(message);
+// }
+
+// const arrowLogMessage = (message: string): void => console.log(message);
+
+// // let myResult: Result = {
+// //   playerName: "Rohit",
+// //   score: 100,
+// //   factor: 10,
+// //   problemCount: 6,
+// // };
+
+// const firstPlayer: Player = new Player();
+// firstPlayer.name = "Ramesh";
+// arrowLogMessage(firstPlayer.formatName());
