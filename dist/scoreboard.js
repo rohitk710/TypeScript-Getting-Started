@@ -1,4 +1,6 @@
-/// <reference path="result.ts" />
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ScoreBoard = void 0;
 var ScoreBoard = /** @class */ (function () {
     function ScoreBoard() {
         this.results = [];
@@ -19,4 +21,5 @@ var ScoreBoard = /** @class */ (function () {
     };
     return ScoreBoard;
 }());
+exports.ScoreBoard = ScoreBoard;
 //# sourceMappingURL=scoreboard.js.map

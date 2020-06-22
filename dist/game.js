@@ -1,13 +1,14 @@
-/// <reference path="utility.ts" />
-/// <reference path="result.ts" />
-/// <reference path="player.ts" />
-/// <reference path="scoreboard.ts" />
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Game = void 0;
+var scoreboard_1 = require("./scoreboard");
+var utility_1 = require("./utility");
 var Game = /** @class */ (function () {
     function Game(player, problemCount, factor) {
         this.player = player;
         this.problemCount = problemCount;
         this.factor = factor;
-        this.scoreboard = new ScoreBoard();
+        this.scoreboard = new scoreboard_1.ScoreBoard();
     }
     Game.prototype.displayGame = function () {
         var gameForm = '';
@@ -25,7 +26,7 @@ var Game = /** @class */ (function () {
     Game.prototype.caculateScore = function () {
         var score = 0;
         for (var i = 1; i <= this.problemCount; i++) {
-            var answer = Number(Utility.getInputValue('answer' + i));
+            var answer = Number(utility_1.getValue('answer' + i));
             if (i * this.factor === answer) {
                 score++;
             }
@@ -42,4 +43,5 @@ var Game = /** @class */ (function () {
     };
     return Game;
 }());
+exports.Game = Game;
 //# sourceMappingURL=game.js.map

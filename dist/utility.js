@@ -1,10 +1,16 @@
-var Utility = /** @class */ (function () {
-    function Utility() {
-    }
-    Utility.getInputValue = function (elementId) {
-        var inputElement = (document.getElementById(elementId));
-        return inputElement.value;
-    };
-    return Utility;
-}());
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.logger = exports.getValue = void 0;
+// class Utility {
+//   static getInputValue(elementId: string): string {
+function getInputValue(elementId) {
+    var inputElement = (document.getElementById(elementId));
+    return inputElement.value;
+}
+exports.getValue = getInputValue;
+// }
+function logger(message) {
+    console.log(message);
+}
+exports.logger = logger;
 //# sourceMappingURL=utility.js.map

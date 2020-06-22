@@ -1,13 +1,18 @@
-/// <reference path="player.ts" />
-/// <reference path="game.ts" />
-// /// <reference path="./result.ts" />
+"use strict";
+// /// <reference path="player.ts" />
+// /// <reference path="game.ts" />
+// // /// <reference path="./result.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
+var player_1 = require("./player");
+var game_1 = require("./game");
+var Helper = require("./utility");
 var newGame;
 document.getElementById("startGame").addEventListener("click", function () {
-    var player = new Player();
-    player.name = Utility.getInputValue("playerName");
-    var problemCount = Number(Utility.getInputValue("problemCount"));
-    var factor = Number(Utility.getInputValue("factor"));
-    newGame = new Game(player, problemCount, factor);
+    var player = new player_1.Player();
+    player.name = Helper.getValue("playerName");
+    var problemCount = Number(Helper.getValue("problemCount"));
+    var factor = Number(Helper.getValue("factor"));
+    newGame = new game_1.Game(player, problemCount, factor);
     newGame.displayGame();
 });
 document.getElementById("calculate").addEventListener("click", function () {
