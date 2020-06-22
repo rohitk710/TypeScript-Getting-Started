@@ -1,12 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScoreBoard = void 0;
+var _ = require("lodash");
 var ScoreBoard = /** @class */ (function () {
     function ScoreBoard() {
         this.results = [];
     }
     ScoreBoard.prototype.addResult = function (newResult) {
         this.results.push(newResult);
+        var allCapsName = _.upperCase(newResult.playerName);
+        console.log(allCapsName);
     };
     ScoreBoard.prototype.updateScoreBoard = function () {
         var output = '<h2>Scoreboard</h2>';
